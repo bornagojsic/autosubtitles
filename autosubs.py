@@ -13,9 +13,10 @@ def r(item):
 
 
 p = os.getcwd()
+directory= os.listdir(p)
 vids = []
 
-for item in os.listdir(p):
+for item in directory:
 	if item.endswith('.zip'):
 		file_name = os.path.abspath(item)
 		with zipfile.ZipFile(file_name, 'r') as z:
@@ -24,7 +25,7 @@ for item in os.listdir(p):
 	elif not (item.endswith('.py') or item.endswith('.srt')):
 		vids.append(item)
 
-subtitles = [r(item) for item in os.listdir(p) if item.endswith('.srt')]
+subtitles = [r(item) for item in directory if item.endswith('.srt')]
 
 videos = [r(item) for item in vids]
 
