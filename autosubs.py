@@ -1,5 +1,13 @@
 import os, re, zipfile
 
+
+def rename(sub, vid):
+	try:
+		os.rename(f'{p}\\{sub[0]}', re.findall(r'.*\.', vid[0])[0] + "srt")
+	except:
+		pass
+
+
 p = os.getcwd()
 vids = []
 
@@ -19,7 +27,4 @@ videos = [(item, list(map(int, re.findall(r'\d{1,3}', re.findall(r'\d{1,3}\D\d{1
 for vid in videos:
 	for sub in subtitles:
 		if vid[1] == sub[1]:
-			try:
-				os.rename(f'{p}\\{sub[0]}', re.findall(r'.*\.', vid[0])[0] + "srt")
-			except:
-				pass
+			rename(sub, vid)
