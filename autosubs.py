@@ -24,7 +24,4 @@ subtitles = [(item, list(map(int, re.findall(r'\d{1,3}', re.findall(r'\d{1,3}\D\
 
 videos = [(item, list(map(int, re.findall(r'\d{1,3}', re.findall(r'\d{1,3}\D\d{1,3}', item)[0])))) for item in vids]
 
-for vid in videos:
-	for sub in subtitles:
-		if vid[1] == sub[1]:
-			rename(sub, vid)
+[rename(sub, vid) for vid in videos for sub in subtitles if vid[1] == sub[1]]
