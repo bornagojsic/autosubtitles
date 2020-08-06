@@ -8,6 +8,10 @@ def rename(sub, vid):
 		pass
 
 
+def r(item):
+	return (item, list(map(int,re.findall(r'\d{1,3}', re.findall(r'\d{1,3}\D\d{1,3}', item)[0]))))
+
+
 p = os.getcwd()
 vids = []
 
@@ -20,9 +24,9 @@ for item in os.listdir(p):
 	elif not (item.endswith('.py') or item.endswith('.srt')):
 		vids.append(item)
 
-subtitles = [(item, list(map(int, re.findall(r'\d{1,3}', re.findall(r'\d{1,3}\D\d{1,3}', item)[0])))) for item in os.listdir(p) if item.endswith('.srt')]
+subtitles = [r(item) for item in os.listdir(p) if item.endswith('.srt')]
 
-videos = [(item, list(map(int, re.findall(r'\d{1,3}', re.findall(r'\d{1,3}\D\d{1,3}', item)[0])))) for item in vids]
+videos = [r(item) for item in vids]
 
 for vid in videos:
 	for sub in subtitles:
