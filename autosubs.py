@@ -1,6 +1,7 @@
 import os, re, zipfile
 from tkinter import Tk
 from tkinter import filedialog
+from time import sleep
 
 
 def rename(sub, vid):
@@ -24,7 +25,8 @@ def main():
 	if input("Are the video files in this directory?[y/n]\n: ") in yes:
 		p = os.getcwd()
 	else:
-		print("Please choose the directory contaning the video files")
+		print("Please choose the directory contaning the video files.")
+		sleep(1)
 		root = Tk()
 		root.withdraw()
 		p = filedialog.askdirectory()
