@@ -6,7 +6,7 @@ from time import sleep
 
 def rename(p, sub, vid):
 	os.rename(f'{p}/{sub[0]}', p + '/' + re.findall(r'.*\.', vid[0])[0] + "srt")
-	print(sub,vid)
+	###print(sub,vid)
 	try:
 		pass
 	except:
